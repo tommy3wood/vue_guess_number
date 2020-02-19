@@ -1,26 +1,31 @@
 var app = new Vue({
   el: "#app",
   data: {
-    message: "Hello Vue!",
-    answer: "9",
+    message: "Hey there lucky fellow!",
+    answer: Math.floor(Math.random() * 100) + 1,
     userGuess: "",
-    endGame: " ",
-    winnerImage: "",
+    endGameResponse: " ",
+    winnerImage: "https://media.giphy.com/media/ZcUGu59vhBGgbBhh0n/giphy.gif",
+    showWin: false,
+    showLose: false,
     },
   methods: {
     guessCheck: function() {
       if (this.userGuess < this.answer) {
-        this.endGame = "Too low!";
+        this.endGameResponse = "Too low!";
+        this.showLose: true;
       } else if (this.userGuess > this.answer) {
-        this.endGame = "Too high!";
+        this.endGameResponse = "Too high!";
+        this.showLose: true;
       } else {
-        this.endGame = "You've won!";
-        this.winnerImage = "https://media.giphy.com/media/ZcUGu59vhBGgbBhh0n/giphy.gif";
+        this.endGameResponse = "You've won!";
+        this.showWin = true;
       }
     },
     playAgain: function() {
-      this.endGame = "";
-      this.winnerImage = "";
+      this.endGameResponse = "";
+      this.showWin = false;
+      this.answer = Math.floor(Math.random() * 100) + 1;
     }
   }
 });

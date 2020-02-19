@@ -10,13 +10,17 @@
     {{ message }}
     <h1>Guess a number!</h1>
     <br>
-    <p>{{endGame}}</p>
-    <img src="{{winnerImage}}">
+    <p>{{endGameResponse}}</p>
+    <p>{{ answer }}</p>
+    
     <div>
       <input type="text" v-model="userGuess">
       <button v-on:click="guessCheck()">Submit</button>
-      <button v-on:click="playAgain()">Play again</button>
+      <button v-on:click="playAgain()">Roll a new numbie</button>
     </div>
+    <br>
+    <img v-if="showWin" src="https://media.giphy.com/media/ZcUGu59vhBGgbBhh0n/giphy.gif">
+    <img v-if="showLose" src="https://media0.giphy.com/media/6g6fIvdYMZPws/giphy.gif">
     <div>
     </div>
   </div>
